@@ -14,7 +14,7 @@ let board13 = createBoard('--7--8------2---6-65--79----7----3-5-83---67-2-1----8
 let board14 = createBoard('----------2-65-------18--4--9----6-4-3---57-------------------73------9----------');
 let board15 = createBoard('---------------------------------------------------------------------------------');
 
-sodokoSolver(board7);
+sudokeSolver(board7);
 console.table(board7)
 
 function createBoard ( data ) {
@@ -40,14 +40,14 @@ function isValid(board, row, col, k) {
 }
 
 
-function sodokoSolver(data) {
+function sudokeSolver(data) {
 	for (let i = 0; i < 9; i++) {
 		for (let j = 0; j < 9; j++) {
 			if (data[i][j] == '-') {
 				for (let k = 1; k <= 9; k++) {
 					if (isValid(data, i, j, k)) {
 						data[i][j] = `${k}`;
-						if (sodokoSolver(data)) {
+						if (sudokeSolver(data)) {
 							return true;
 						} else {
 							data[i][j] = '-';
